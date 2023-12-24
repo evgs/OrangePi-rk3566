@@ -10,7 +10,7 @@
         target = <&gpio3>;
         __overlay__ {
                 bttrelay_gpio: bttrelay_gpio {
-                        rockchip,pins = <3 25 0 &pcfg_pull_none>;	# GPIO3_D1
+                        rockchip,pins = <3 25 0 &pcfg_pull_none>;
                 };
 
             };
@@ -28,7 +28,7 @@
 
                         gpios = <&gpio3 25 0>;
                         default_state="on";
-                        linux,default-trigger = "default_on";
+                        linux,default-trigger = "default-on";
                 };
         };
     };

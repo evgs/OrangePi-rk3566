@@ -1,0 +1,25 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+
+    compatible = "rockchip,rk3566";
+
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+                leds: leds {
+                        compatible = "gpio-leds";
+                        pinctrl-names = "default";
+                        pinctrl-0 =<&leds_gpio>;
+
+                        led@1 {
+                                gpios = <&gpio0 16 0>;
+                                label = "status_led";
+                                linux,default-trigger = "activity";
+                        };
+                };
+        };
+    };
+};

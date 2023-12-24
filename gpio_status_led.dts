@@ -1,0 +1,48 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pwm/pwm.h>
+#include <dt-bindings/pinctrl/rockchip.h>
+#include <dt-bindings/input/rk-input.h>
+#include <dt-bindings/display/drm_mipi_dsi.h>
+#include <dt-bindings/sensor-dev.h>
+#include <dt-bindings/display/rockchip_vop.h>
+#include "rk3566.dtsi"
+#include "rk3568-linux.dtsi"
+
+/ {
+
+    #compatible = "rockchip,rk3566-orangepi-3b", "rockchip,rk3566";
+    compatible = "rockchip,rk3566";
+
+
+    fragment@0 {
+        target = <&gpio0>;
+        __overlay__ {
+		leds_gpio: leds-gpio {
+			rockchip,pins = <0 RK_PC0 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+
+            };
+        };
+    };
+    fragment@1 {
+        target-path = "/leds/";
+        __overlay__ {
+	        leds: leds {
+			compatible = "gpio-leds";
+			pinctrl-names = "default";
+			pinctrl-0 =<&leds_gpio>;
+
+			led@1 {
+                        gpios = <&gpio0 RK_PC0 GPIO_ACTIVE_HIGH>;
+                        label = "status_led";
+                        linux,default-trigger = "activity";
+			};
+		};
+        };
+    };
+};
+
+

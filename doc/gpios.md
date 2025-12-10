@@ -27,6 +27,8 @@
 | 3/27 | GPIO3_D3 | 37 | 38 | GPIO3_D2 | 3/26 |
 |      |      GND | 39 | 40 | GPIO3_D1 | 3/25 |
 
+Например, в moonraker пин GPIO3_D2 будет описан так:
+```gpiochip3/gpio26```
 
 ## Нумерация для wiringOP
 
